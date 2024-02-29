@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Par(num) {
+            if (num % 2 == 0) {
+                return true
+            }
+            return false
+        }
+        let numero = prompt("Informe um número inteiro e positivo","")
+        if(isNaN(numero)){
+            alert("Numero Invalido!")
+        }
+        else {
+            if (numero >= 0 && numero % 1 === 0 && numero.trim() != "") {
+                if (Par(numero)) {
+                    alert("É par")
+                } else {
+                    alert("É impar")
+                }
+            }
+            else {
+                alert("Numero Invalido!")
+            }            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

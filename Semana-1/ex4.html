@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+        let algo = prompt("Digite algo","")
+        if (algo.trim() != "" && algo != null) {
+            let informar = confirm("Você quer ver o tipo do dado que você escreveu?")
+            if (informar == true) {
+                if (Number(algo) == algo) {
+                    document.write("<h1>Você informou um número!</h1>")
+                } else {
+                    document.write("<h1>Você informou uma string!</h1>")
+                }
+            }
+            else {
+                document.write("<h1>Obrigado por visitar essa página</h1>")
+            }
+        }
+        else {
+            document.write("<h1>Você não digitou nada!</h1>")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

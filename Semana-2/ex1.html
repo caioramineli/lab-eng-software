@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Exercício 1</h1>
+    <label for="">Escreva algo</label>
+    <input type="text" id="meu-input">
+    <button id="btn-add">Adicionar</button>
+    <ol id="lista">
+
+    </ol>
+
+    <script>
+
+        let btn = document.getElementById('btn-add')
+        let lista = document.getElementById('lista')
+        let palavras = []
+
+        function addPalavra() {
+            let input = document.getElementById('meu-input')
+            if (input.value.trim() !== '') {
+                palavras.push(input.value)
+                exibirOl();
+                input.value = '' 
+            } else {
+                alert('Digite algo no input!')
+            }
+        }
+
+        function exibirOl() {
+            lista.innerHTML = "";
+            palavras.sort();
+
+            for (let i = 0; i < palavras.length; i++) {
+                let texto = palavras[i];
+                let li = document.createElement("li")
+                li.textContent = texto
+                lista.appendChild(li)
+            }
+
+            console.log(palavras);
+        }
+
+        btn.addEventListener('click', function() {
+            addPalavra()
+        })
+
+        let input = document.getElementById('meu-input')
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                addPalavra();
+            }
+        })
+
+    </script>
+</body>
+
+</html>

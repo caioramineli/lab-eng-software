@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Primo(num) {
+            for (let i = 2; i < num; i++)
+                if (num % i === 0) {
+                    return false;
+                }
+                return num > 1;
+            };
+        let numero = prompt("Informe um número inteiro e positivo","")
+        if(isNaN(numero)){
+            alert("Numero Invalido!")
+        }
+        else {
+            if (numero >= 0 && numero % 1 === 0 && numero.trim() != "") {
+                if (Primo(numero)) {
+                    alert("É primo")
+                } else {
+                    alert("Não é primo")
+                }
+            }
+            else {
+                alert("Numero Invalido!")
+            }            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

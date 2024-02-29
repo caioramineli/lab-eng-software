@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fatorial(numero){
+            if (numero === 0 || numero === 1) {
+                return 1;
+            } else {
+                return numero * fatorial(numero - 1)
+            }
+        }
+        let numero = prompt("Informe um número inteiro e positivo","")
+        if(isNaN(numero)){
+            alert("Numero Invalido!")
+        }
+        else {
+            if (numero >= 0 && numero % 1 === 0 && numero.trim() != ""){
+                alert(fatorial(numero));    
+            }
+            else {
+                alert("Numero Invalido!")
+            }            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
