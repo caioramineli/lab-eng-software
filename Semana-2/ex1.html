@@ -25,7 +25,7 @@
         function addPalavra() {
             let input = document.getElementById('meu-input')
             if (input.value.trim() !== '') {
-                palavras.push(input.value)
+                palavras.push(input.value.toLowerCase())
                 exibirOl();
                 input.value = '' 
             } else {
