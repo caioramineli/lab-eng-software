@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Exercício 3</h1>
+    <label>Digite algo para verificar se é um palíndromo</label>
+    <input type="text" id="input">
+    <button id="btn">Verificar</button>
+
+    <script>
+        let btn = document.getElementById('btn')
+        btn.addEventListener('click', ()=> {
+            let input = document.getElementById('input').value.trim().toLowerCase()
+            let palavraReverse = ""
+
+            if (input != "" && input != null) {
+                if (input.length <= 1) {
+                    return alert('é apenas uma letra!')
+                }
+
+                for (let j = input.length - 1; j >= 0; j--) {
+                    const letraReverse = input[j];
+                    palavraReverse += letraReverse
+                }
+            }
+            if (input == palavraReverse) {
+                alert('É um palíndromo')
+            }
+            else {
+                alert ("Não é palíndromo")
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

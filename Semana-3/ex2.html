@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 2</title>
+    <style>
+        button {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exercício 2</h1>
+    <h1 id="h1"></h1>
+    <script>
+        let h1 = document.getElementById('h1')
+        function horaAtual() {
+            const data = new Date()
+            let complementoM = ""
+            let complementoH = ""
+            let complementoS = ""
+            if (data.getMinutes() < 10) {
+                complementoM = "0"
+            }
+            else if (data.getHours() < 10) {
+                complementoH = "0"
+            }
+            else if (data.getSeconds() < 10) {
+                complementoS = "0"
+            }
+            h1.innerHTML = complementoH + data.getHours() + ":" + complementoM + data.getMinutes() + ":" + complementoS + data.getSeconds();
+        }
+        setInterval(horaAtual, 1000)
+        
+    </script>
+</body>
+
+</html>
