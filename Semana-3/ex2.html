@@ -25,10 +25,10 @@
             if (data.getMinutes() < 10) {
                 complementoM = "0"
             }
-            else if (data.getHours() < 10) {
+            if (data.getHours() < 10) {
                 complementoH = "0"
             }
-            else if (data.getSeconds() < 10) {
+            if (data.getSeconds() < 10) {
                 complementoS = "0"
             }
             h1.innerHTML = complementoH + data.getHours() + ":" + complementoM + data.getMinutes() + ":" + complementoS + data.getSeconds();
