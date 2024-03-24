@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <script src="script1.js" defer></script>
+    <title>Ex 1</title>
+</head>
+
+<body>
+    <h1>Formulario de Cadastro</h1>
+    <form id="form">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo">
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="fulano.com">
+
+        <label for="data_nasc">Data Nascimento:</label>
+        <input type="date" name="data_nasc" id="data_nascimento">
+
+        <label for="telefone-f">Telefone Fixo:</label>
+        <input type="text" name="telefone-f" id="telefone_f" placeholder="(99) 99999-9999">
+
+        <label for="telefone-c">Telefone Celular:</label>
+        <input type="text" name="telefone-c" id="telefone_c" placeholder="(99) 99999-9999">
+
+        <div>
+            <input type="radio" name="radio" value="professor" id="professor">Professor
+            <input type="radio" name="radio" value="aluno" id="aluno">Aluno
+            <span id="span-radio">Selecione Algum</span>
+        </div>
+
+        <div id="inserir">
+
+        </div>
+
+        <div>
+            <button type="button" id="btn-enviar">Enviar</button>
+            <button type="reset" id="reset-form">Redefinir</button>
+        </div>    
+        <span id="span-erro">Preencha todos os campos</span>
+    </form>
+
+    <ol id="dados-form">
+        
+    </ol>
+</body>
+
+</html>

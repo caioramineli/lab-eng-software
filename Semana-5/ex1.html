@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex 1</title>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+
+    <script>
+        let container = document.getElementById('container')
+        container.style.cssText = 'position: relative; display: flex; flex-direction: column; align-items: center; margin: 0 auto; width: 500px; box-shadow: 2px 2px 5px 0px black;'
+
+        let titulo = document.createElement('h1')
+        titulo.textContent = 'Total'
+        container.appendChild(titulo)
+        titulo.style.cssText = 'margin: 15px;'
+
+        let total = document.createElement('span')
+        total.textContent = 0
+        total.style.cssText = 'border: 2px solid black; border-radius: 5px; padding: 5px 20px; font-size: 1.2rem; margin-bottom: 10px'
+        container.appendChild(total)
+
+        let reload = document.createElement('img')
+        reload.src = 'reload.png'
+        container.appendChild(reload)
+        reload.style.cssText = 'width: 40px; position: absolute; top: 5px; right:5px'
+        
+
+        let divHomemMulher = document.createElement('div')
+        container.appendChild(divHomemMulher)
+        divHomemMulher.style.cssText = 'display:flex;'
+
+        let divH = document.createElement('div')
+        divHomemMulher.appendChild(divH)
+        divH.style.cssText = 'display:flex; flex-direction: column; align-items: center'
+
+        let homem = document.createElement('img')
+        homem.src = 'homem.png'
+        divH.appendChild(homem)
+        homem.style.cssText = 'width: 200px;'
+
+        let divMaisMenosH = document.createElement('div')
+        divH.appendChild(divMaisMenosH)
+        divMaisMenosH.style.cssText = 'display:flex; gap: 15px; margin-top: 5px;'
+
+        let mais = document.createElement('img')
+        mais.src = 'mais.png'
+        divMaisMenosH.appendChild(mais)
+        mais.style.cssText = 'width: 50px;'
+
+        let menos = document.createElement('img')
+        menos.src = 'menos.png'
+        divMaisMenosH.appendChild(menos)
+        menos.style.cssText = 'width: 50px;'
+
+        let homens = document.createElement('h1')
+        homens.textContent = 'Homens'
+        divH.appendChild(homens)
+        homens.style.cssText = 'margin: 15px;'
+
+        let totalH = document.createElement('span')
+        totalH.textContent = 0
+        totalH.style.cssText = 'border: 2px solid black; border-radius: 5px; padding: 5px 20px; font-size: 1.2rem; margin-bottom: 10px'
+        divH.appendChild(totalH)
+
+        let divM = document.createElement('div')
+        divHomemMulher.appendChild(divM)
+        divM.style.cssText = 'display:flex; flex-direction: column;align-items: center'
+
+        let mulher = document.createElement('img')
+        mulher.src = 'mulher.png'
+        divM.appendChild(mulher)
+        mulher.style.cssText = 'width: 200px;'
+
+        let divMaisMenosM = document.createElement('div')
+        divM.appendChild(divMaisMenosM)
+        divMaisMenosM.style.cssText = 'display:flex; gap: 15px; margin-top: 5px;'
+
+        let mais2 = document.createElement('img')
+        mais2.src = 'mais.png'
+        divMaisMenosM.appendChild(mais2)
+        mais2.style.cssText = 'width: 50px;'
+
+        let menos2 = document.createElement('img')
+        menos2.src = 'menos.png'
+        divMaisMenosM.appendChild(menos2)
+        menos2.style.cssText = 'width: 50px;'
+
+        let mulheres = document.createElement('h1')
+        mulheres.textContent = 'Mulheres'
+        divM.appendChild(mulheres)
+        mulheres.style.cssText = 'margin: 15px;'
+
+        let totalM = document.createElement('span')
+        totalM.textContent = 0
+        totalM.style.cssText = 'border: 2px solid black; border-radius: 5px; padding: 5px 20px; font-size: 1.2rem; margin-bottom: 10px'
+        divM.appendChild(totalM)
+
+        let contadorH = 0
+        let contadorTotal = 0
+        let contadorM = 0
+
+        mais.addEventListener('click', () => {
+            contadorH++
+            contadorTotal++
+            totalH.textContent = contadorH
+            total.textContent = contadorTotal
+        })
+
+        mais2.addEventListener('click', () => {
+            contadorM++
+            contadorTotal++
+            totalM.textContent = contadorM
+            total.textContent = contadorTotal
+        })
+
+        menos.addEventListener('click', () => {
+            if (contadorTotal > 0 && contadorH > 0) {
+                contadorH--
+                contadorTotal--
+                totalH.textContent = contadorH
+                total.textContent = contadorTotal
+            }
+        })
+
+        menos2.addEventListener('click', () => {
+            if (contadorTotal > 0 && contadorM > 0) {
+                contadorM--
+                contadorTotal--
+                totalM.textContent = contadorM
+                total.textContent = contadorTotal
+            }
+        })
+
+        reload.addEventListener('click', () => {
+            contadorH = 0
+            contadorTotal = 0
+            contadorM = 0
+            totalH.textContent = contadorH
+            totalM.textContent = contadorM
+            total.textContent = contadorTotal
+        })
+
+    </script>
+</body>
+
+</html>

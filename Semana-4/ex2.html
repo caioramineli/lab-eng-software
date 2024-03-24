@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <script src="script2.js" defer></script>
+    <title>Ex 2</title>
+</head>
+<body>
+    <h1>CARRO</h1>
+    <form id="form">
+        <label for="marca">Marca:</label>
+        <input type="text" name="marca" id="marca" placeholder="Ford">
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" name="modelo" id="modelo" placeholder="Fusion">
+
+        <label for="ano">Ano:</label>
+        <input type="number" name="ano" id="ano" placeholder="2015">
+
+        <label for="cor">Cor:</label>
+        <input type="color" name="cor" id="cor" placeholder="Preto">
+
+        <label for="km">Kilometragem:</label>
+        <input type="number" name="km" id="km" placeholder="50000">
+
+        <label for="valor_fipe">Valor Fipe:</label>
+        <input type="number" name="valor_fipe" id="valor_fipe" placeholder="50000">
+
+        <div>
+            <button type="button" id="btn-enviar">Enviar</button>
+            <button type="reset">Redefinir</button>
+        </div>    
+        <span id="span-erro">Preencha todos os campos</span>
+    </form>
+    
+    <div id="dados-form">
+    
+    </div>
+
+    <div class="container-carro">
+        <div id="carro"></div>
+        <div class="wheel left"></div>
+        <div class="wheel right"></div>
+    </div>
+    
+
+</body>
+</html>
