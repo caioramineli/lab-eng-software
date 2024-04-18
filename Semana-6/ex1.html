@@ -24,8 +24,7 @@
 </head>
 
 <body>
-    <section id="calculadora">
-    </section>
+    <section id="calculadora"></section>
 
     <script defer>
         let calculadora = document.getElementById('calculadora')
@@ -33,16 +32,21 @@
 
         let preencher = document.createElement('div')
         calculadora.appendChild(preencher)
-        preencher.style.cssText = 'background-color: black; height: 186px; width: 350px;'
+        preencher.style.cssText = 'background-color: black; height: 144px; width: 350px;'
 
         let parteDeCima = document.createElement('div')
         document.body.appendChild(parteDeCima)
         parteDeCima.style.cssText = 'margin: 0 auto; position: absolute; top: 28px; right:0px; left:0px; z-index: 0; background-color: black; height: 180px; width: 350px'
 
-        let visor = document.createElement('span')
-        visor.textContent = 0
-        calculadora.appendChild(visor)
-        visor.style.cssText = 'display:flex; justify-content: end; font-size: 3.5rem; margin-right: 1.5rem; color:white; margin-bottom: 15px'
+        let operacaoAnteriorTexto = document.createElement('span')
+
+        calculadora.appendChild(operacaoAnteriorTexto)
+        operacaoAnteriorTexto.style.cssText = 'display:flex; justify-content: end; font-size: 1.5rem; margin-right: 1.5rem; color: lightgray; margin-bottom: 15px; min-height: 28px'
+
+        let operacaoAtualTexto = document.createElement('span')
+        operacaoAtualTexto.textContent = '0'
+        calculadora.appendChild(operacaoAtualTexto)
+        operacaoAtualTexto.style.cssText = 'display:flex; justify-content: end; font-size: 3.5rem; margin-right: 1.5rem; color:white; margin-bottom: 15px; min-height: 65px'
 
         let containerBtns = document.createElement('div')
         containerBtns.style.cssText = 'display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 10px; justify-items: center;'
@@ -53,279 +57,242 @@
         containerBtns.appendChild(ac)
         ac.style.cssText = 'font-size: 2rem; background-color: #a5a5a5; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        ac.addEventListener("click", function () {
-            visor.textContent = 0;
-        });
+        ac.addEventListener('click', () => {
+            operacaoAnteriorTexto.textContent = ''
+            operacaoAtualTexto.textContent = 0;
+        })
 
         let trocar = document.createElement('button')
         trocar.textContent = '+/-'
         containerBtns.appendChild(trocar)
         trocar.style.cssText = 'font-size: 2.5rem; background-color: #a5a5a5; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        trocar.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                if (visor.textContent < 0) {
-                    visor.textContent *= -1;
-                    console.log(visor.textContent);
-                }
-                else if (visor.textContent + 0) {
-                    visor.textContent *= -1;
-                    console.log(visor.textContent);
-                }
-            }
-
-        });
-
         let porcentagem = document.createElement('button')
         porcentagem.textContent = '%'
         containerBtns.appendChild(porcentagem)
         porcentagem.style.cssText = 'font-size: 2.5rem; background-color: #a5a5a5; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-
-        porcentagem.addEventListener("click", function () {
-            if (visor.textContent != 0 && visor.textContent != 1e-18) {
-                visor.textContent /= 100
-            }
-        });
 
         let divisao = document.createElement('button')
         divisao.textContent = '÷'
         containerBtns.appendChild(divisao)
         divisao.style.cssText = 'color:white; font-size: 3.2rem; background-color: #ff9f0a; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        divisao.addEventListener("click", function () {
-            if (Validar(visor.textContent)) {
-                visor.textContent += '÷'
-
-            }
-
-        });
-
         let sete = document.createElement('button')
         sete.textContent = '7'
         containerBtns.appendChild(sete)
         sete.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-        sete.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 7;
-            } else {
-                visor.textContent = 7;
-            }
-
-        });
 
         let oito = document.createElement('button')
         oito.textContent = '8'
         containerBtns.appendChild(oito)
         oito.style.cssText = 'color:white; color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-        oito.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 8;
-            } else {
-                visor.textContent = 8;
-            }
-        });
 
         let nove = document.createElement('button')
         nove.textContent = '9'
         containerBtns.appendChild(nove)
         nove.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        nove.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 9;
-            } else {
-                visor.textContent = 9;
-            }
-        });
-
         let multiplicar = document.createElement('button')
         multiplicar.textContent = 'x'
         containerBtns.appendChild(multiplicar)
         multiplicar.style.cssText = 'color:white; font-size: 3rem; background-color: #ff9f0a; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-
-        multiplicar.addEventListener("click", function () {
-            if (Validar(visor.textContent)) {
-                visor.textContent = visor.textContent + '*'
-            }
-
-        });
 
         let quatro = document.createElement('button')
         quatro.textContent = '4'
         containerBtns.appendChild(quatro)
         quatro.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        quatro.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 4;
-            } else {
-                visor.textContent = 4;
-            }
-        });
-
         let cinco = document.createElement('button')
         cinco.textContent = '5'
         containerBtns.appendChild(cinco)
         cinco.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-
-        cinco.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 5;
-            } else {
-                visor.textContent = 5;
-            }
-        });
 
         let seis = document.createElement('button')
         seis.textContent = '6'
         containerBtns.appendChild(seis)
         seis.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        seis.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 6;
-            } else {
-                visor.textContent = 6;
-            }
-        });
-
         let menos = document.createElement('button')
         menos.textContent = '-'
         containerBtns.appendChild(menos)
         menos.style.cssText = 'color:white; font-size: 3rem; background-color: #ff9f0a; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-
-        menos.addEventListener("click", function () {
-            if (Validar(visor.textContent)) {
-                visor.textContent = visor.textContent + '-'
-            }
-
-        });
 
         let um = document.createElement('button')
         um.textContent = '1'
         containerBtns.appendChild(um)
         um.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        um.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 1;
-            } else {
-                visor.textContent = 1;
-            }
-        });
-
         let dois = document.createElement('button')
         dois.textContent = '2'
         containerBtns.appendChild(dois)
         dois.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-
-        dois.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 2;
-            } else {
-                visor.textContent = 2;
-            }
-        });
 
         let tres = document.createElement('button')
         tres.textContent = '3'
         containerBtns.appendChild(tres)
         tres.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        tres.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 3;
-            } else {
-                visor.textContent = 3;
-            }
-        });
-
         let mais = document.createElement('button')
         mais.textContent = '+'
         containerBtns.appendChild(mais)
         mais.style.cssText = 'color:white; font-size: 3rem; background-color: #ff9f0a; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
-
-        mais.addEventListener("click", function () {
-            if (Validar(visor.textContent)) {
-                visor.textContent = visor.textContent + '+'
-            }
-
-        });
 
         let ultimoContainerBtns = document.createElement('div')
         ultimoContainerBtns.style.cssText = 'color:white; display: grid; grid-template-columns: 2fr 1fr 1fr; margin-top: 10px; ; margin-bottom: 20px; justify-items: center;'
         calculadora.appendChild(ultimoContainerBtns)
 
         let zero = document.createElement('button')
-        zero.textContent = '0 \u00A0 \u00A0 \u00A0'
+        zero.textContent = '0'
         ultimoContainerBtns.appendChild(zero)
         zero.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 155px; height: 70px; border-radius: 100px; justify-content: center; align-items: center; margin-bottom: 70px;'
 
-        zero.addEventListener("click", function () {
-            if (visor.textContent != 0) {
-                visor.textContent += 0;
-            } else {
-                visor.textContent = 0;
-            }
-        });
-
-        let virgula = document.createElement('button')
-        virgula.textContent = ','
-        ultimoContainerBtns.appendChild(virgula)
-        virgula.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center;'
-
-        virgula.addEventListener("click", function () {
-            if (!visor.textContent.includes(',')) {
-                visor.textContent = visor.textContent + ','
-            }
-
-        });
+        let ponto = document.createElement('button')
+        ponto.textContent = '.'
+        ultimoContainerBtns.appendChild(ponto)
+        ponto.style.cssText = 'color:white; font-size: 3rem; background-color: #333333; width: 70px; height: 70px; border-radius: 50%; justify-content: center;'
 
         let igual = document.createElement('button')
         igual.textContent = '='
         ultimoContainerBtns.appendChild(igual)
         igual.style.cssText = 'color:white; font-size: 3rem; background-color: #ff9f0a; width: 70px; height: 70px; border-radius: 50%; justify-content: center; align-items: center;'
 
-        igual.addEventListener("click", function () {
-            visor.textContent = eval(visor.textContent)
-        });
-
-        var buttons = document.querySelectorAll('button');
-        buttons.forEach(function (button) {
-            button.addEventListener("click", (btn) => {
-                let valor = btn.target.textContent
-
-                if (+valor >= 0 || valor === ",") {
-                    console.log(valor);
-                    console.log(visor.textContent);
-                } else {
-                    console.log("op: " + valor);
-                    console.log("op"+ visor.textContent);
-                }
-            })
-
-        });
-
         let imagem = document.createElement('img')
         imagem.src = 'iphone.png'
         document.body.appendChild(imagem)
         imagem.style.cssText = 'margin: 0 auto; width: 402px; z-index: 2; position: absolute; top: 5px; left: 0; right: 0'
 
-        function Validar(expressao) {
-            // Verifica se a expressão começa ou termina com operador
-            if (/^[+\-x/÷]|[+\-x/÷]$/.test(expressao)) {
-                return false;
+        class Calculadora {
+            constructor(operacaoAnteriorTexto, operacaoAtualTexto) {
+                this.operacaoAnteriorTexto = operacaoAnteriorTexto
+                this.operacaoAtualTexto = operacaoAtualTexto
+                this.operacaoAtual = ""
             }
 
-            // Verifica se existem múltiplos operadores consecutivos
-            if (/([+\-x/÷,]){2,}/.test(expressao)) {
-                return false;
+            addDigito(digito) {
+                if (digito == '.' && this.operacaoAtualTexto.textContent.includes('.')) {
+                    return
+                }
+                if (this.operacaoAtualTexto.textContent.length > 9) {
+                    return
+                }
+                this.operacaoAtual = digito
+                this.atualizarVisor()
             }
 
-            return true;
+            realizarOperacao(operacao) {
+                if (this.operacaoAtualTexto.textContent === "") {
+                    if (this.operacaoAnteriorTexto.textContent !== "") {
+                        this.mudarOperacao(operacao)
+                    }
+                    return
+                }
+
+                let valorOperacao
+                let anterior = +this.operacaoAnteriorTexto.textContent.split(" ")[0];
+                let atual = +this.operacaoAtualTexto.textContent
+
+                switch (operacao) {
+                    case '+':
+                        valorOperacao = anterior + atual
+                        this.atualizarVisor(valorOperacao, operacao, atual, anterior)
+                        break;
+                    case '-':
+                        valorOperacao = anterior - atual
+                        this.atualizarVisor(valorOperacao, operacao, atual, anterior)
+                        break;
+                    case '÷':
+                        valorOperacao = anterior / atual
+                        this.atualizarVisor(valorOperacao, operacao, atual, anterior)
+                        break;
+                    case 'x':
+                        valorOperacao = anterior * atual
+                        this.atualizarVisor(valorOperacao, operacao, atual, anterior)
+                        break;
+                    case '+/-':
+                        this.trocarSinal()
+                        break;
+                    case '%':
+                        valorOperacao = anterior * atual / 100
+                        this.atualizarVisor(valorOperacao, operacao, atual, anterior)
+                        break;
+                    case '=':
+                        this.resultado()
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            atualizarVisor(
+                valorOperacao = null,
+                operacao = null,
+                atual = null,
+                anterior = null
+            ) {
+
+                if (valorOperacao == null) {
+                    if (this.operacaoAtualTexto.textContent === '') {
+                        if (this.operacaoAtual === '.') {
+                            this.operacaoAtualTexto.textContent = '0.';
+                        } else {
+                            this.operacaoAtualTexto.textContent = this.operacaoAtual;
+                        }
+                    } else if (this.operacaoAtualTexto.textContent === '0' && this.operacaoAtual !== '.') {
+                        this.operacaoAtualTexto.textContent = this.operacaoAtual;
+                    } else {
+                        this.operacaoAtualTexto.textContent += this.operacaoAtual;
+                    }
+                } else {
+                    if (anterior === 0) {
+                        valorOperacao = atual
+                    }
+                    this.operacaoAnteriorTexto.textContent = valorOperacao + " " + operacao
+                    this.operacaoAtualTexto.textContent = ""
+                }
+            }
+
+            mudarOperacao(operacao) {
+                const operecoes = ["x", "÷", "+", "-"]
+
+                if (!operecoes.includes(operacao)) {
+                    return
+                }
+                this.operacaoAnteriorTexto.textContent = this.operacaoAnteriorTexto.textContent.slice(0, -1) + operacao
+            }
+
+            trocarSinal() {
+                if (operacaoAtualTexto.textContent != 0) {
+                    if (operacaoAtualTexto.textContent < 0) {
+                        operacaoAtualTexto.textContent *= -1;
+                    }
+                    else if (operacaoAtualTexto.textContent > 0) {
+                        operacaoAtualTexto.textContent *= -1;
+                    }
+                }
+            }
+
+            resultado() {
+                const operacao = operacaoAnteriorTexto.textContent.split(" ")[1]
+                this.realizarOperacao(operacao)
+            }
         }
 
-        //arrumar %, +/-, reponsividade
+        const calc = new Calculadora(operacaoAnteriorTexto, operacaoAtualTexto)
+
+        let buttons = document.querySelectorAll('button');
+        buttons.forEach(function (button) {
+            button.addEventListener("click", (e) => {
+                let valor = e.target.textContent
+
+                if (+valor >= 0 || valor === ".") {
+                    calc.addDigito(valor)
+
+                } else {
+                    calc.realizarOperacao(valor)
+                }
+            })
+        });
+
     </script>
 </body>
 
