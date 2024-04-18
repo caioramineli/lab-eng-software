@@ -246,6 +246,9 @@
                     if (anterior === 0) {
                         valorOperacao = atual
                     }
+                    if (operacao == '-' && this.operacaoAnteriorTexto.textContent == '0 -') {
+                        valorOperacao = -atual
+                    }
                     this.operacaoAnteriorTexto.textContent = valorOperacao + " " + operacao
                     this.operacaoAtualTexto.textContent = ""
                 }
